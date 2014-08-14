@@ -1,0 +1,52 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="css/lightbox.css">
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+$(document).ready(function()
+{
+	var finish, transition_time;
+
+    $("#progress_bar").dialog({ autoOpen: false });
+
+    $.getJSON('js/data.json', function(data)
+    {
+  		$.each(data.data, function(i, value)
+  		{
+    		console.log(value.start);
+    		console.log(value.finish);
+    		console.log(value.duration);
+    		finish = value.finish;
+    		transition_time = value.duration
+  		});
+    	
+    	$("#progress_bar").dialog("open").prev(".ui-dialog-titlebar").css("color","#d3d3d3");;
+    	$('.progress').animate(
+    					{ 
+    						width: '100%' 
+    					}, 
+    					{
+    						duration:transition_time,
+        					step:function(now, fx)
+        					{
+        						var data =  Math.round(now);
+             				//use the 'now' to calculate percent and update the number
+             					$(progress_status).text('Progress '+data+'%');
+        					}
+  						}); // set duration); 
+    });
+});
+
+</script>
+</head>
+<body>
+    <div id="progress_bar" title="Progress">
+    	<div id='progress_log' >
+    		<div class="progress"></div>
+		</div>
+    	<div id="progress_status"></div>
+    </div>
+</body>
+</html>

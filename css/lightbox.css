@@ -1,0 +1,28 @@
+#progress_log{
+    background:grey; 
+    color:white; 
+    padding:10px; 
+    margin-top:10%;
+    overflow:hidden; 
+    position:relative;
+}
+#progress_bar
+{
+    height:80px;
+    line-height:80px;
+}
+.progress{
+    z-index;1;
+    width:0px;
+    height:100%;
+    position:absolute;
+    padding:20px 10px;     
+    background:#ADD8E6;
+    left:0px;
+    top:0px;
+}
+#progress_status
+{
+    text-align:center;
+    color:grey;
+}
